@@ -1,0 +1,17 @@
+C:\Users\BLACKPROTIK\Downloads\HytaleMCProxy\src\main\java\com\proxy\network\util\PacketEncoder.java
+C:\Users\BLACKPROTIK\Downloads\HytaleMCProxy\src\main\java\com\proxy\network\handler\MinecraftProxyHandler.java
+C:\Users\BLACKPROTIK\Downloads\HytaleMCProxy\src\main\java\com\proxy\protocol\CodeNinjaBridge.java
+C:\Users\BLACKPROTIK\Downloads\HytaleMCProxy\src\main\java\com\proxy\network\packet\play\PlayerRotationPacket.java
+C:\Users\BLACKPROTIK\Downloads\HytaleMCProxy\src\main\java\com\proxy\network\decoder\MinecraftPacketDecoder.java
+C:\Users\BLACKPROTIK\Downloads\HytaleMCProxy\src\main\java\com\proxy\network\packet\play\PlayerPositionPacket.java
+C:\Users\BLACKPROTIK\Downloads\HytaleMCProxy\src\main\java\com\proxy\network\handler\HytaleHandler.java
+C:\Users\BLACKPROTIK\Downloads\HytaleMCProxy\src\main\java\com\proxy\network\ProxyServer.java
+C:\Users\BLACKPROTIK\Downloads\HytaleMCProxy\src\main\java\com\proxy\protocol\SkinTranslator.java
+C:\Users\BLACKPROTIK\Downloads\HytaleMCProxy\src\main\java\com\proxy\network\HytaleTestBot.java
+C:\Users\BLACKPROTIK\Downloads\HytaleMCProxy\src\main\java\com\proxy\network\packet\MinecraftPacket.java
+C:\Users\BLACKPROTIK\Downloads\HytaleMCProxy\src\main\java\com\proxy\network\decoder\PacketFrameDecoder.java
+C:\Users\BLACKPROTIK\Downloads\HytaleMCProxy\src\main\java\com\proxy\network\HytaleChannelInitializer.java
+C:\Users\BLACKPROTIK\Downloads\HytaleMCProxy\src\main\java\com\proxy\network\packet\handshake\HandshakePacket.java
+C:\Users\BLACKPROTIK\Downloads\HytaleMCProxy\src\main\java\com\proxy\network\PlayerPosition.java
+C:\Users\BLACKPROTIK\Downloads\HytaleMCProxy\src\main\java\com\proxy\network\MinecraftChannelInitializer.java
+C:\Users\BLACKPROTIK\Downloads\HytaleMCProxy\src\main\java\com\proxy\network\packet\play\ChatMessagePacket.java
