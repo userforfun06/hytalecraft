@@ -117,11 +117,35 @@ public class MinecraftPacketDecoder extends MessageToMessageDecoder<ByteBuf> {
     }
 
     private MinecraftPacket decodePlayPacket(int packetId, ByteBuf buf) {
-        // Simple handlers for Play state
-        if (packetId == 0x05) {
-            return new ChatMessagePacket(readString(buf), buf.readLong(), buf.readLong(), null, buf.readBoolean());
+        switch (packetId) {
+            case 0x05: {
+                // Chat message
+                return new ChatMessagePacket(readString(buf), buf.readLong(), buf.readLong(), null, buf.readBoolean());
+            }
+            case 0x11: {
+                // Player Position (client -> server)
+                if (buf.readableBytes() < 25) return null; // 3 doubles (24) + 1 bool
+                double x = buf.readDouble();
+                double y = buf.readDouble();
+                double z = buf.readDouble();
+                boolean onGround = buf.readBoolean();
+                PlayerPositionPacket posPacket = new PlayerPositionPacket(x, y, z, onGround);
+                System.out.println(">>> [PLAY] PlayerPosition x=" + x + " y=" + y + " z=" + z + " onGround=" + onGround);
+                return posPacket;
+            }
+            case 0x12: {
+                // Player Rotation (client -> server)
+                if (buf.readableBytes() < 9) return null; // 2 floats (8) + 1 bool
+                float yaw = buf.readFloat();
+                float pitch = buf.readFloat();
+                boolean onGround = buf.readBoolean();
+                PlayerRotationPacket rotPacket = new PlayerRotationPacket(yaw, pitch, onGround);
+                System.out.println(">>> [PLAY] PlayerRotation yaw=" + yaw + " pitch=" + pitch + " onGround=" + onGround);
+                return rotPacket;
+            }
+            default:
+                return null;
         }
-        return null;
     }
 
     public void setState(ConnectionState newState) { this.state = newState; }

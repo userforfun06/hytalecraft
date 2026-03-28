@@ -1,4 +1,4 @@
-package com.proxy.network;
+package com.proxy.protocol;
 
 import com.google.inject.Inject;
 import com.proxy.network.handler.HytaleHandler;
