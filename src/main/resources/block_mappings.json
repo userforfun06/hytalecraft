@@ -1,0 +1,15 @@
+{
+  "comment": "HytaleCraft Block Mappings v1 — Hytale block ID → MC block state ID",
+  "mappings": [
+    { "hytaleId": 1,  "hytaleBlock": "hytale:grass_block", "mcStateId": 0,   "mcBlock": "minecraft:grass_block" },
+    { "hytaleId": 2,  "hytaleBlock": "hytale:dirt",        "mcStateId": 10,  "mcBlock": "minecraft:dirt" },
+    { "hytaleId": 3,  "hytaleBlock": "hytale:stone",       "mcStateId": 1,   "mcBlock": "minecraft:stone" },
+    { "hytaleId": 4,  "hytaleBlock": "hytale:sand",        "mcStateId": 66,  "mcBlock": "minecraft:sand" },
+    { "hytaleId": 5,  "hytaleBlock": "hytale:gravel",      "mcStateId": 68,  "mcBlock": "minecraft:gravel" },
+    { "hytaleId": 6,  "hytaleBlock": "hytale:oak_log",     "mcStateId": 84,  "mcBlock": "minecraft:oak_log" },
+    { "hytaleId": 7,  "hytaleBlock": "hytale:oak_leaves",  "mcStateId": 161, "mcBlock": "minecraft:oak_leaves" },
+    { "hytaleId": 8,  "hytaleBlock": "hytale:water",       "mcStateId": 34,  "mcBlock": "minecraft:water" },
+    { "hytaleId": 9,  "hytaleBlock": "hytale:bedrock",     "mcStateId": 33,  "mcBlock": "minecraft:bedrock" },
+    { "hytaleId": 10, "hytaleBlock": "hytale:oak_planks",  "mcStateId": 17,  "mcBlock": "minecraft:oak_planks" }
+  ]
+}
