@@ -1,8 +1,12 @@
 package com.proxy.network;
 
+import com.proxy.network.handler.HytaleHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.DatagramChannel;
+import io.netty.handler.codec.LineBasedFrameDecoder;
+import io.netty.handler.codec.string.StringDecoder;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Channel initializer for Hytale UDP/QUIC connections.
@@ -31,13 +35,8 @@ public class HytaleChannelInitializer extends ChannelInitializer<DatagramChannel
     protected void initChannel(DatagramChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
         
-        // TODO: Add Hytale-specific decoders and handlers
-        // Since Hytale uses UDP, you'll need:
-        // 1. A decoder to parse Hytale protocol packets from UDP datagrams
-        // 2. A handler to process Hytale packets and bridge to Minecraft protocol
-        
-        // Example structure (to be implemented):
-        // pipeline.addLast("hytaleDecoder", new HytalePacketDecoder());
-        // pipeline.addLast("hytaleHandler", new HytaleProxyHandler());
+        // HytaleHandler processes raw DatagramPackets directly (UDP is message-based).
+        // We add a HytaleHandler that reads the datagram payload and responds.
+        pipeline.addLast("hytaleHandler", new HytaleHandler());
     }
 }

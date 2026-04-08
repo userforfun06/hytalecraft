@@ -22,9 +22,17 @@ public class ProxyServer {
 
     public void start() throws Exception {
         // Boss handles incoming connections, Workers handle the data
-        EventLoopGroup bossGroup = new NioEventLoopGroup(1);
-        EventLoopGroup workerGroup = new NioEventLoopGroup();
-        
+        final EventLoopGroup bossGroup = new NioEventLoopGroup(1);
+        final EventLoopGroup workerGroup = new NioEventLoopGroup();
+
+        // Shutdown hook — closes both bootstraps cleanly on JVM exit
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println(">>> [ProxyServer] Shutdown hook triggered — stopping event loops...");
+            workerGroup.shutdownGracefully();
+            bossGroup.shutdownGracefully();
+            System.out.println(">>> [ProxyServer] Event loops stopped.");
+        }, "proxy-shutdown"));
+
         try {
             // 1. MINECRAFT (TCP) SETUP
             // This is the bridge you already built that connects to Paper
@@ -46,7 +54,7 @@ public class ProxyServer {
              .handler(new ChannelInitializer<NioDatagramChannel>() {
                  @Override
                  public void initChannel(NioDatagramChannel ch) {
-                     ch.pipeline().addLast(new HytaleHandler()); 
+                     ch.pipeline().addLast(new HytaleHandler());
                  }
              });
 
@@ -61,10 +69,11 @@ public class ProxyServer {
             ChannelFuture mcFuture = mcBootstrap.bind(mcPort).sync();
             ChannelFuture hytaleFuture = hytaleBootstrap.bind(hytalePort).sync();
 
-            // Keep the application running
+            // Keep the application running until both channels close
             mcFuture.channel().closeFuture().sync();
+            hytaleFuture.channel().closeFuture().sync();
         } finally {
-            // Shut down gracefully if the proxy is stopped
+            // Graceful shutdown (also reached if shutdown hook hasn't fired yet)
             workerGroup.shutdownGracefully();
             bossGroup.shutdownGracefully();
         }
